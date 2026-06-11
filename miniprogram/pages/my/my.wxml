@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="user-info" wx:if="{{userInfo}}">
+    <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+    <view class="user-details">
+      <text class="user-name">{{userInfo.nickName}}</text>
+      <text class="user-role">{{userRole === 'direct_sales' ? '直销队员' : userRole === 'grid_master' ? '网格长' : userRole === 'vice_grid_master' ? '副网格长' : userRole === 'technical_manager' ? '技术经理' : '超级管理员'}}</text>
+    </view>
+  </view>
+
+  <view class="tab-container">
+    <view class="tabs">
+      <view class="tab {{tabActive === 0 ? 'active' : ''}}" bindtap="onTabChange" data-index="0">
+        {{tabs[0]}}
+      </view>
+      <view class="tab {{tabActive === 1 ? 'active' : ''}}" bindtap="onTabChange" data-index="1">
+        {{tabs[1]}}
+      </view>
+      <view class="tab {{tabActive === 2 ? 'active' : ''}}" bindtap="onTabChange" data-index="2">
+        {{tabs[2]}}
+      </view>
+    </view>
+  </view>
+
+  <view class="ticket-list">
+    <view class="ticket-item" wx:for="{{myTickets}}" wx:key="_id" bindtap="onTicketTap" data-id="{{item._id}}">
+      <view class="ticket-header">
+        <text class="ticket-no">{{item.ticket_no}}</text>
+        <text class="ticket-status" style="color: {{item.status === 'pending' ? '#ff6b6b' : item.status === 'processing' ? '#ffa940' : '#52c41a'}}">
+          {{item.status === 'pending' ? '待处理' : item.status === 'processing' ? '处理中' : '已解决'}}
+        </text>
+      </view>
+      <view class="ticket-body">
+        <text class="ticket-info">宽带账号: {{item.broadband_account}}</text>
+        <text class="ticket-info">客户诉求: {{item.customer_demand}}</text>
+      </view>
+      <view class="ticket-footer">
+        <text class="ticket-date">{{item.created_at}}</text>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{myTickets.length === 0}}">
+      <text>暂无工单</text>
+    </view>
+  </view>
+
+  <view class="action-buttons">
+    <button class="btn btn-logout" bindtap="onLogout">退出登录</button>
+  </view>
+</view>
