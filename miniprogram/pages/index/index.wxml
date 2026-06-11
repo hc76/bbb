@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="header">
+    <text class="title">疑难工单管理系统</text>
+  </view>
+
+  <!-- 工单统计 -->
+  <view class="stats-container">
+    <view class="stat-card">
+      <view class="stat-number">{{stats.pending}}</view>
+      <view class="stat-label">待处理</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-number">{{stats.processing}}</view>
+      <view class="stat-label">处理中</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-number">{{stats.resolved}}</view>
+      <view class="stat-label">已解决</view>
+    </view>
+  </view>
+
+  <!-- 功能按钮 -->
+  <view class="button-group">
+    <button class="btn btn-primary" bindtap="onReportTicket" wx:if="{{userRole === 'direct_sales'}}">
+      <text class="btn-icon">+</text>上报疑难工单
+    </button>
+    
+    <button class="btn btn-secondary" bindtap="onViewTickets">
+      查看工单列表
+    </button>
+
+    <button class="btn btn-warning" bindtap="onAdminSettings" wx:if="{{userRole === 'super_admin'}}">
+      系统设置
+    </button>
+  </view>
+
+  <!-- 快速导航 -->
+  <view class="quick-nav">
+    <view class="nav-title">快速导航</view>
+    <view class="nav-items">
+      <view class="nav-item" bindtap="onViewTickets">
+        <text class="nav-icon">📋</text>
+        <text class="nav-text">工单列表</text>
+      </view>
+      <view class="nav-item" wx:if="{{userRole === 'technical_manager'}}" bindtap="onViewTickets">
+        <text class="nav-icon">⏳</text>
+        <text class="nav-text">待处理</text>
+      </view>
+    </view>
+  </view>
+</view>
