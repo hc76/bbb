@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="status-tabs">
+    <view class="tab-item {{status === 'pending' ? 'active' : ''}}" bindtap="onStatusChange" data-status="pending">
+      待处理
+    </view>
+    <view class="tab-item {{status === 'processing' ? 'active' : ''}}" bindtap="onStatusChange" data-status="processing">
+      处理中
+    </view>
+    <view class="tab-item {{status === 'resolved' ? 'active' : ''}}" bindtap="onStatusChange" data-status="resolved">
+      已解决
+    </view>
+  </view>
+
+  <view class="ticket-list">
+    <view class="ticket-item" wx:for="{{tickets}}" wx:key="_id" bindtap="onTicketTap" data-id="{{item._id}}">
+      <view class="ticket-header">
+        <text class="ticket-no">{{item.ticket_no}}</text>
+        <text class="ticket-status" style="color: {{item.status === 'pending' ? '#ff6b6b' : item.status === 'processing' ? '#ffa940' : '#52c41a'}}">
+          {{item.status === 'pending' ? '待处理' : item.status === 'processing' ? '处理中' : '已解决'}}
+        </text>
+      </view>
+      <view class="ticket-body">
+        <text class="ticket-account">账号: {{item.broadband_account}}</text>
+        <text class="ticket-demand">诉求: {{item.customer_demand}}</text>
+        <text class="ticket-address">地址: {{item.order_address}}</text>
+      </view>
+      <view class="ticket-footer">
+        <text class="ticket-reporter">上报: {{item.reporter_name}}</text>
+        <text class="ticket-date">{{item.created_at}}</text>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{tickets.length === 0 && !loading}}">
+      <text>暂无工单</text>
+    </view>
+
+    <view class="loading-tip" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+  </view>
+</view>
