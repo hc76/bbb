@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="form-group">
+    <label class="form-label">宽带账号</label>
+    <input class="form-input" type="text" placeholder="请输入宽带账号" data-field="broadband_account" bindinput="onInputChange" />
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">业务类型</label>
+    <picker class="form-input" bindchange="onPickerChange" value="{{form.business_type}}" data-field="business_type">
+      <view>{{form.business_type}}</view>
+    </picker>
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">下单日期</label>
+    <input class="form-input" type="date" data-field="order_date" value="{{form.order_date}}" bindchange="onDateChange" />
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">下单地址</label>
+    <input class="form-input" type="text" placeholder="请输入下单地址" data-field="order_address" bindinput="onInputChange" />
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">上报所属网格</label>
+    <picker class="form-input" bindchange="onGridChange" data-field="report_grid_id">
+      <view>{{form.report_grid_id ? form.report_grid_id : '请选择网格'}}</view>
+    </picker>
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">实际所属网格</label>
+    <picker class="form-input" bindchange="onActualGridChange" data-field="actual_grid_id">
+      <view>{{form.actual_grid_id ? form.actual_grid_id : '请选择网格'}}</view>
+    </picker>
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">施工班组</label>
+    <input class="form-input" type="text" placeholder="请输入施工班组" data-field="construction_team" bindinput="onInputChange" />
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">客户诉求</label>
+    <textarea class="form-textarea" placeholder="请填写客户诉求" data-field="customer_demand" bindinput="onInputChange"></textarea>
+  </view>
+
+  <view class="form-group">
+    <label class="form-label">装机疑难问题</label>
+    <textarea class="form-textarea" placeholder="请详细描述装机过程中遇到的问题" data-field="installation_issue" bindinput="onInputChange"></textarea>
+  </view>
+
+  <view class="button-group">
+    <button class="btn btn-primary" bindtap="onSubmit">提交工单</button>
+  </view>
+</view>
