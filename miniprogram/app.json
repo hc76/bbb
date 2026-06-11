@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/reportTicket/reportTicket",
+    "pages/ticketList/ticketList",
+    "pages/ticketDetail/ticketDetail",
+    "pages/replyTicket/replyTicket",
+    "pages/my/my",
+    "pages/admin/admin"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "疑难工单管理",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/ticketList/ticketList",
+        "text": "工单列表",
+        "iconPath": "images/tab-list.png",
+        "selectedIconPath": "images/tab-list-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/tab-my.png",
+        "selectedIconPath": "images/tab-my-active.png"
+      }
+    ]
+  },
+  "cloud": true
+}
