@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="ticket-header-section">
+    <view class="ticket-no-row">
+      <text class="label">工单号:</text>
+      <text class="value">{{ticket.ticket_no}}</text>
+    </view>
+    <view class="ticket-status-row">
+      <text class="label">状态:</text>
+      <text class="status-badge" style="background-color: {{ticket.status === 'pending' ? '#ff6b6b' : ticket.status === 'processing' ? '#ffa940' : '#52c41a'}}">
+        {{ticket.status === 'pending' ? '待处理' : ticket.status === 'processing' ? '处理中' : '已解决'}}
+      </text>
+    </view>
+  </view>
+
+  <view class="ticket-info-section">
+    <view class="info-group">
+      <text class="info-title">基本信息</text>
+      <view class="info-item">
+        <text class="info-label">宽带账号:</text>
+        <text class="info-value">{{ticket.broadband_account}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">业务类型:</text>
+        <text class="info-value">{{ticket.business_type}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">下单地址:</text>
+        <text class="info-value">{{ticket.order_address}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">施工班组:</text>
+        <text class="info-value">{{ticket.construction_team}}</text>
+      </view>
+    </view>
+
+    <view class="info-group">
+      <text class="info-title">问题描述</text>
+      <view class="info-item">
+        <text class="info-label">客户诉求:</text>
+        <text class="info-value">{{ticket.customer_demand}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">装机疑难:</text>
+        <text class="info-value">{{ticket.installation_issue}}</text>
+      </view>
+    </view>
+
+    <view class="info-group">
+      <text class="info-title">工单信息</text>
+      <view class="info-item">
+        <text class="info-label">上报人:</text>
+        <text class="info-value">{{ticket.reporter_name}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">上报时间:</text>
+        <text class="info-value">{{ticket.created_at}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="replies-section">
+    <text class="replies-title">处理记录</text>
+    <view class="reply-item" wx:for="{{replies}}" wx:key="_id">
+      <view class="reply-header">
+        <text class="reply-handler">{{item.handler_name}}</text>
+        <text class="reply-time">{{item.created_at}}</text>
+      </view>
+      <view class="reply-content">
+        <text>{{item.content}}</text>
+      </view>
+      <view class="reply-status">
+        状态: <text style="color: {{item.status === 'processing' ? '#ffa940' : '#52c41a'}}">
+          {{item.status === 'processing' ? '处理中' : '已解决'}}
+        </text>
+      </view>
+    </view>
+
+    <view class="empty-replies" wx:if="{{replies.length === 0}}">
+      <text>暂无处理记录</text>
+    </view>
+  </view>
+
+  <view class="action-buttons" wx:if="{{canReply}}">
+    <button class="btn btn-primary" bindtap="onReplyTicket">添加回复</button>
+  </view>
+</view>
