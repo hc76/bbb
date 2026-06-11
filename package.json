@@ -1,0 +1,13 @@
+{
+  "name": "troubleticket-miniapp",
+  "version": "1.0.0",
+  "description": "疑难工单管理微信小程序",
+  "main": "miniprogram/app.js",
+  "scripts": {
+    "dev": "echo \"Start development server\"",
+    "build": "echo \"Build project\""
+  },
+  "keywords": ["weixin", "miniapp", "troubleticket"],
+  "author": "hc76",
+  "license": "MIT"
+}
